@@ -1,0 +1,42 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: greece-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+      - id: greece-hera
+        uri: lb://greece-hera
+        predicates:
+        - Path=/**/user/**,/user/
+      - id: greece-athena
+        uri: lb://greece-athena
+        predicates:
+        - Path=/athena/**
+      - id: greece-hades
+        uri: lb://greece-hades
+        predicates:
+        - Path=/hades/**
+  redis:
+    host: 121.196.145.132
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 500
+        min-idle: 0
+    lettuce:
+      shutdown-timeout: 0
+    password: 123456
+  main:
+    allow-bean-definition-overriding: true
+

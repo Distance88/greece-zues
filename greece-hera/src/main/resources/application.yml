@@ -1,0 +1,31 @@
+server:
+  port: 9030
+
+spring:
+  application:
+    name: greece-hera
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://121.196.145.132:3306/greece-hera?characterEncoding=utf-8&serverTImeZone=true&useSSL=false
+    username: root
+    password: 123456
+  redis:
+    host: 121.196.145.132
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 500
+        min-idle: 0
+    lettuce:
+      shutdown-timeout: 0
+    password: 123456
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
