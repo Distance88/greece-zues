@@ -26,7 +26,7 @@ spring:
         predicates:
         - Path=/hades/**
   redis:
-    host: 121.196.145.132
+    host: 121.40.116.76
     port: 6379
     jedis:
       pool:
